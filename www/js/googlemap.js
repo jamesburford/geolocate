@@ -2,7 +2,6 @@ function GoogleMap(){
  
 this.initialize = function(){
 var map = showMap();
- alert(map);
 }
  
  var showMap = function(){
