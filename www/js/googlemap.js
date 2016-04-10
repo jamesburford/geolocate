@@ -1,8 +1,8 @@
 function GoogleMap(){
  
 this.initialize = function(){
- alert("GoogleMap init");
 var map = showMap();
+ alert("map set");
 }
  
  var showMap = function(){
