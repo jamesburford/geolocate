@@ -11,6 +11,7 @@ center: new google.maps.LatLng(-33, 151),
 mapTypeId: google.maps.MapTypeId.ROADMAP
 }
  
+ alert(document.getElementById("map_canvas"));
 var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
  
 return map;
