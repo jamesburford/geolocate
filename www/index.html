@@ -68,6 +68,7 @@
 				<form>
 					<div id="jsalarmclock">
 						<div><span>Hour<select></select></span> <span>Minutes<select></select></span> </div>
+						<input type="number" id="notificationdelay" min="5" max="60">
 						<input type="button" value="Set alarm" id="submitbutton" /> <input type="reset" value="Clear alarm" id="resetbutton" />
 					</div>
 				</form>
@@ -308,8 +309,9 @@
 						alarmAction();
 					}
 				}, 1000);*/
-
-				var ms = 10 * 60000;
+				
+				var min = parseInt( $('#notificationdelay').val());
+				var ms = min * 60000;
 				var d = new Date(t - ms);
 				if (d < (new Date())) d.setDate(d.getDate() + 1);
 				setNotification(d);
