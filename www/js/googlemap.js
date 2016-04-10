@@ -2,7 +2,7 @@ function GoogleMap(){
  
 this.initialize = function(){
 var map = showMap();
- alert("map set");
+ alert(JSON.stringify(map));
 }
  
  var showMap = function(){
