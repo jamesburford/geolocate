@@ -34,6 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas"));
     //var map = new GoogleMap();
     //map.initialize();
     },
