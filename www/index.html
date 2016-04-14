@@ -363,14 +363,7 @@
 			else
 				$('#welcome').html("Welcome!");
 				
-		/*	var map;
-			function initMap()
-			{
-				map = new google.maps.Map(document.getElementById('map_canvas')), {
-					center: { lat: -34, lng: 150 },
-					zoom: 8
-				});
-			} */
+		
 		</script>
 		
 		
@@ -400,7 +393,7 @@
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+            infoWindow.setContent('You have parked here.');
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
