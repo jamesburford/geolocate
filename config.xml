@@ -16,7 +16,7 @@
   <preference name="android-installLocation" value="auto"/>
   <plugin name="de.appplant.cordova.plugin.local-notification-ios9-fix" source="pgb" />
   <icon src="icon.png"/>
-  <gap:splash gap:platform="ios" height="960" src="www/res/icon/android/icon-36-ldpi.png" width="640" />
+  <gap:splash gap:platform="ios" height="960" src="www/res/icon/android/icon-36-ldpi.png" width="device-width" />
   
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
