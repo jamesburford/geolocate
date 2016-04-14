@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html style="background:yellow;">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="msapplication-tap-highlight" content="no" />
 		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">	
+		<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
 		<title>GPS Countdown</title>
+		
+		
 		<style>
-		 html, body {
-		 height: 100%;
-          	 margin: 0;
-         	 padding: 0;
-		  }
 		#map {
-        	height: 20px;
-        	width: 100%;
+        	height: 100px;
 		}	
 		</style>
+		
+		
 		
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
 		
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
-		
-<!--link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/googlemap.js"></script-->
-
-
+    
 	</head>
 	<body>
 		<div data-role="page" id="home">
 			<div data-role="header">
 				<h1 text-align="center">
-					<img src="images/icon.png" alt="Logo" width="10">
+					<img src="images/logo.png" alt="Logo" width="400">
 					<a href="#defaultpanel"><img src="images/3lines.png" alt="Logo" width="20" /></a>
 				</h1>
 			</div>
@@ -130,7 +124,7 @@
 
 			<div role="main" class="ui-content">
 				<h1>Map here</h1>
-				    <div id="map" width="100%" height="20px"></div>
+				    <div id="map"></div>
 
 			</div>
 
@@ -378,8 +372,13 @@
 				});
 			} */
 		</script>
+		
+		
+		
+		
+		
 
-		<script>
+  <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
@@ -387,8 +386,8 @@
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-        //  center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 18
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -422,6 +421,5 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9gqrmo8v0qXl19HpqvdD9_eY_h5XpmE&callback=initMap">
     </script>
-    
-    </body>
+	</body>
 </html>
