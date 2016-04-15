@@ -416,7 +416,7 @@
       
       function refreshMap()
       {
-      	if (location.hash.substr(1) === "map") alert("MAP");//google.maps.event.trigger(map, 'resize');
+      	if (location.hash.substr(1) === "map") google.maps.event.trigger(map, 'resize');
       }
     </script>
     <script async defer
