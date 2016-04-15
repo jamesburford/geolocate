@@ -398,9 +398,9 @@
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
+            /*infoWindow.setPosition(pos);
             infoWindow.setContent('You have parked here.');
-            map.setCenter(pos);
+            map.setCenter(pos);*/
             
             consloe.log(pos);
           }, function() {
@@ -431,11 +431,11 @@
 	      		else {
 	      			// Returning to the map, so want to get the users loccation.
 	      			   pos = window.localStorage.getItem("carlocation");
-	      			   infoWindow.setPosition(pos);
-	        		   infoWindow.setContent('You have parked here.');
-	            		   map.setCenter(pos);
 	      		}
 	      		
+      		        infoWindow.setPosition(pos);
+		        infoWindow.setContent('You have parked here.');
+    		        map.setCenter(pos);
       			google.maps.event.trigger(map, 'resize');
       		}, 500);
       	}
