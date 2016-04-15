@@ -378,15 +378,17 @@
       // locate you.
       
       var pos;
+      var map;
+      var infoWindow;
 
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 18
         });
-        var infoWindow = new google.maps.InfoWindow({map: map});
+        infoWindow = new google.maps.InfoWindow({map: map});
         
-        google.maps.event.trigger(map, 'resize');
+        //google.maps.event.trigger(map, 'resize');
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
