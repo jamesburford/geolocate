@@ -25,7 +25,7 @@
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
     
 	</head>
-	<body>
+	<body onhashchange="refreshMap()">
 		<div data-role="page" id="home">
 			<div data-role="header">
 				<h1 text-align="center">
@@ -412,6 +412,12 @@
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
+      }
+      
+      function refreshMap()
+      {
+      	if (location.hash.substr(1) === "map")
+      	  google.maps.event.trigger(map, 'resize');
       }
     </script>
     <script async defer
