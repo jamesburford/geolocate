@@ -399,6 +399,8 @@
             infoWindow.setPosition(pos);
             infoWindow.setContent('You have parked here.');
             map.setCenter(pos);
+            
+            consloe.log(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
