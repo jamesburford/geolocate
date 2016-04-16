@@ -396,6 +396,8 @@
               lng: position.coords.longitude
             };
             
+            alert(JSON.stringify(pos));
+            
             if (window.localStorage) {
             	if (window.localStorage.getItem("InitialLocation") === null)
             		window.localStorage.setItem("InitialLocation", pos);
