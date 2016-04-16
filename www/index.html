@@ -382,10 +382,6 @@
       var infoWindow = null;
 
       function initMap() {
-        
-        //google.maps.event.trigger(map, 'resize');
-        alert(pos.lat + " " + pos.lng);
-        
         map = new google.maps.Map(document.getElementById('map'), {
           center: pos,
           zoom: 18
@@ -421,7 +417,7 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
       
-      function refreshMap()
+      function xrefreshMap()
       {
       	if (location.hash.substr(1) === "map")
       	{
@@ -446,8 +442,7 @@
       	}
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uyz3-pk1FffmFqgilBK1Hf4Me6Sd_wY&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uyz3-pk1FffmFqgilBK1Hf4Me6Sd_wY&callback=initMap">
     </script>
 	</body>
 </html>
