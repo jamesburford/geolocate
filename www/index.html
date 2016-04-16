@@ -378,8 +378,8 @@
       // locate you.
       
       var pos = {lat: -34.397, lng: 150.644};
-      var map;
-      var infoWindow;
+      var map = null;
+      var infoWindow = null;
 
       function initMap() {
         
@@ -435,7 +435,7 @@
 	      		}
 	      		
 	      		alert(".");
-	      		alert(JSON.stringify(pos));
+	      		alert(JSON.stringify(infoWindow));
 	      		
       		        infoWindow.setPosition(pos);
 		        infoWindow.setContent('You have parked here.');
