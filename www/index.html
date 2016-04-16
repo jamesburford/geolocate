@@ -96,7 +96,7 @@
 				<p>&nbsp;</p>
 				<hr>
 				<p>&nbsp;</p>
-				<a href="#map"><button>Continue to map</button></a>
+				<a href="#mappage"><button>Continue to map</button></a>
 				<p>&nbsp;</p>
 			</div>
 
@@ -124,7 +124,7 @@
 			</div><!-- /defaultpanel -->
 		</div>
 
-		<div data-role="page" id="map">
+		<div data-role="page" id="mappage">
 			<div data-role="header">
 				<h1 text-align="center">
 					<img src="images/logo.png" alt="Logo" width="200">
@@ -134,7 +134,7 @@
 
 			<div role="main" class="ui-content">
 				<h1>Map here</h1>
-				    <div id="mapcontainer"></div>
+				    <div id="map"></div>
 
 			</div>
 
@@ -389,7 +389,7 @@
 			// locate you.
 
 			function initMap() {
-				var map = new google.maps.Map(document.getElementById('mapcontainer'), {
+				var map = new google.maps.Map(document.getElementById('map'), {
 					center: {lat: -34.397, lng: 150.644},
 					zoom: 18
 				});
