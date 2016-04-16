@@ -393,11 +393,9 @@
               lng: position.coords.longitude
             };
 
-            /*infoWindow.setPosition(pos);
+            infoWindow.setPosition(pos);
             infoWindow.setContent('You have parked here.');
-            map.setCenter(pos);*/
-            
-            consloe.log(pos);
+            map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
