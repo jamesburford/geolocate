@@ -25,7 +25,7 @@
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
     
 	</head>
-	<body onhashchange="refreshMap()">
+	<body>
 		<div data-role="page" id="home">
 			<div data-role="header">
 				<h1 text-align="center">
@@ -377,9 +377,9 @@
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
       
-      var pos = {lat: -34.397, lng: 150.644};
-      var map = null;
-      var infoWindow = null;
+      pos = {lat: -34.397, lng: 150.644};
+      //var map = null;
+      //var infoWindow = null;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
