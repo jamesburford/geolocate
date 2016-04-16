@@ -399,8 +399,10 @@
             if (window.localStorage) {
             	if (window.localStorage.getItem("InitialLocation") === null)
             		window.localStorage.setItem("InitialLocation", pos);
-    		else
+    		else {
     			pos = window.localStorage.getItem("InitialLocation");
+    			alert(JSON.stringify(pos));
+    		}
             }
             else {
             	alert("No storage");
