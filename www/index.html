@@ -401,7 +401,7 @@
             		window.localStorage.setItem("InitialLocation", pos);
     		else {
     			pos = window.localStorage.getItem("InitialLocation");
-    			alert(JSON.stringify(pos));
+    			alert(pos.lat + " " + pos.lng);
     		}
             }
             else {
