@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background:yellow;">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="format-detection" content="telephone=no" />
@@ -11,7 +11,7 @@
 		
 		
 		<style>
-		#map_container {
+		#map {
         	height: 100px;
 		}	
 		</style>
@@ -25,7 +25,7 @@
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
     
 	</head>
-	<body>
+	<body onhashchange="refreshMap()">
 		<div data-role="page" id="home">
 			<div data-role="header">
 				<h1 text-align="center">
@@ -125,7 +125,7 @@
 
 			<div role="main" class="ui-content">
 				<h1>Map here</h1>
-				    <div id="map_container"></div>
+				    <div id="map"></div>
 
 			</div>
 
@@ -363,83 +363,70 @@
 			// The hour is not between 0 and 24, so something is wrong
 			else
 				$('#welcome').html("Welcome!");
-		</script>
-
-		<script type="text/javascript">
-			// Note: This example requires that you consent to location sharing when
-			// prompted by your browser. If you see the error "The Geolocation service
-			// failed.", it means you probably did not give permission for the browser to
-			// locate you.
-
-			//pos = {lat: -34.397, lng: 150.644};
-			//var map = null;
-			//var infoWindow = null;
-
-			function initMap() {
-				//var pos = {lat: -34.397, lng: 150.644};
-				var map = new google.maps.Map(document.getElementById('map_container'), {
-					center: {lat: -34.397, lng: 150.644},
-					zoom: 18
-				});
-
-				var infoWindow = new google.maps.InfoWindow({map: map});
-
-				// Try HTML5 geolocation.
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(function(position) {
-						var pos = {
-							lat: position.coords.latitude,
-							lng: position.coords.longitude
-						};
-
-						infoWindow.setPosition(pos);
-						infoWindow.setContent('You have parked here.');
-						map.setCenter(pos);
-						
-						//google.maps.event.trigger(map, 'resize');
-					}, function() {
-						handleLocationError(true, infoWindow, map.getCenter());
-					});
-				} else {
-					// Browser doesn't support Geolocation
-					handleLocationError(false, infoWindow, map.getCenter());
-				}
 				
-				google.maps.event.trigger(map, 'resize');
-			}
-
-			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-				infoWindow.setPosition(pos);
-				infoWindow.setContent(	browserHasGeolocation ?
-							"Error: The Geolocation service failed." :
-							"Error: Your browser doesn't support geolocation.");
-			}
-      
-		      /*function xrefreshMap()
-		      {
-		      	if (location.hash.substr(1) === "map")
-		      	{
-		      		setTimeout(function() {
-		      			if (localStorage.getItem("carlocation") === null) {
-			      			// First time, want to set the location
-			      			 window.localStorage.setItem("carlocation",pos);
-			      		}
-			      		else {
-			      			// Returning to the map, so want to get the users loccation.
-			      			   pos = window.localStorage.getItem("carlocation");
-			      		}
-			      		
-			      		alert(".");
-			      		alert(JSON.stringify(infoWindow));
-			      		
-		      		        infoWindow.setPosition(pos);
-				        infoWindow.setContent('You have parked here.');
-		    		        map.setCenter(pos);
-		      			google.maps.event.trigger(map, 'resize');
-		      		}, 500);
-		      	}
-		      }*/
+		
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uyz3-pk1FffmFqgilBK1Hf4Me6Sd_wY&callback=initMap"></script>
+		
+		
+		
+		
+		
+
+		
+  <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 18
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        
+        google.maps.event.trigger(map, 'resize');
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You have parked here.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      }
+      
+      function refreshMap()
+      {
+      	if (location.hash.substr(1) === "map")
+      	{
+      		setTimeout(function() {
+      			google.maps.event.trigger(map, 'resize');
+      		}, 500);
+      	}
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uyz3-pk1FffmFqgilBK1Hf4Me6Sd_wY&callback=initMap">
+    </script>
 	</body>
 </html>
