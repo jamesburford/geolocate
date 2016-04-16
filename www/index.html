@@ -404,6 +404,8 @@
 					// Browser doesn't support Geolocation
 					handleLocationError(false, infoWindow, map.getCenter());
 				}
+				
+				google.maps.event.trigger(map, 'resize');
 			}
 
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
