@@ -410,9 +410,13 @@
 									lng: position.coords.longitude
 								};
 
-								var infoWindow2 = new google.maps.InfoWindow({map: map});
-								infoWindow2.setPosition(start);
-								infoWindow2.setContent('You are here.');
+								var image = "http://maps.google.com/mapfiles/kml/shapes/arrow.png";
+								var parkingMarker = new google.maps.Marker({
+								position: start,
+								map: map,
+								icon: image
+								});
+
 
 								var request = {
 									origin:start,
