@@ -382,19 +382,25 @@
       //var infoWindow = null;
 
       function initMap() {
+      	alert("initMap start");
         map = new google.maps.Map(document.getElementById('map'), {
           center: pos,
           zoom: 18
         });
+        alert("map set: " + JSON.stringify(map));
         infoWindow = new google.maps.InfoWindow({map: map});
+        alert("infoWindow set: " + JSON.stringify(infoWindow));
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
+        	alert("Has navigator.geolocation")
           navigator.geolocation.getCurrentPosition(function(position) {
+          	alert("getCurrentPosition()");
             pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            alert("pos set: " + JSON.stringify(pos));
             
             
 
@@ -417,7 +423,7 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
       
-      function xrefreshMap()
+      /*function xrefreshMap()
       {
       	if (location.hash.substr(1) === "map")
       	{
@@ -440,7 +446,7 @@
       			google.maps.event.trigger(map, 'resize');
       		}, 500);
       	}
-      }
+      }*/
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4uyz3-pk1FffmFqgilBK1Hf4Me6Sd_wY&callback=initMap">
     </script>
