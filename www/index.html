@@ -434,6 +434,8 @@
 	      			   pos = window.localStorage.getItem("carlocation");
 	      		}
 	      		
+	      		alert(JSON.stringify(infoWindow));
+	      		
       		        infoWindow.setPosition(pos);
 		        infoWindow.setContent('You have parked here.');
     		        map.setCenter(pos);
