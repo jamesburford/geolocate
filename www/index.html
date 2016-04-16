@@ -395,6 +395,8 @@
 						infoWindow.setPosition(pos);
 						infoWindow.setContent('You have parked here.');
 						map.setCenter(pos);
+						
+						google.maps.event.trigger(map, 'resize');
 					}, function() {
 						handleLocationError(true, infoWindow, map.getCenter());
 					});
