@@ -396,7 +396,7 @@
               lng: position.coords.longitude
             };
             
-            if (navigator.localStorage) {
+            if (window.localStorage) {
             	if (window.localStorage.getItem("InitialLocation") === null)
             		window.localStorage.setItem("InitialLocation", pos);
     		else
