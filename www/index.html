@@ -396,14 +396,11 @@
               lng: position.coords.longitude
             };
             
-            alert(JSON.stringify(pos));
-            
             if (window.localStorage) {
             	if (window.localStorage.getItem("InitialLocation") === null)
-            		window.localStorage.setItem("InitialLocation", pos);
+            		window.localStorage.setItem("InitialLocation", JSON.stringify(pos));
     		else {
-    			pos = window.localStorage.getItem("InitialLocation");
-    			alert(pos.lat + " " + pos.lng);
+    			pos = JSON.parse(window.localStorage.getItem("InitialLocation"));
     		}
             }
             else {
