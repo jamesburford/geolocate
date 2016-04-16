@@ -395,6 +395,16 @@
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            
+            if (navigator.localStorage) {
+            	if (window.localStorage.getItem("InitialLocation") === null)
+            		window.localStorage.setItem("InitialLocation", pos);
+    		else
+    			pos = window.localStorage.getItem("InitialLocation");
+            }
+            else {
+            	alert("No storage");
+            }
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('You have parked here.');
