@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('resume', this.onResume, false);
     },
     // deviceready Event Handler
     //
@@ -36,6 +37,9 @@ var app = {
         app.receivedEvent('deviceready');
     //var map = new GoogleMap();
     //map.initialize();
+    },
+    onResume: function() {
+        window.location.hash="#home";
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
