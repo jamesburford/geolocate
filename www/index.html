@@ -66,6 +66,43 @@
 			</div><!-- /defaultpanel -->
 		</div>
 		
+		
+			<div data-role="page" id="return">
+			<div data-role="header">
+				<h1 text-align="center">
+					<img src="images/logo.png" alt="Logo" width="400">
+					<a href="#defaultpanel"><img src="images/3lines.png" alt="Logo" width="20" /></a>
+				</h1>
+			</div>
+
+			<div role="main" class="ui-content">
+				<h1>Welcome back</h1>
+			</div>
+
+			<div data-role="footer">
+				<h1>&copy;2016 GPS Countdown</h1>
+			</div>
+
+			<!-- defaultpanel  -->
+			<div data-role="panel" id="defaultpanel" data-theme="b">
+				<div class="panel-content">
+					<h3>Default panel options</h3>
+					<p><a href="#home">Home</a></p>
+					<p><a href="#timer">Timer</a></p>
+					<p>&nbsp;</p>
+					<p><a href="#about">About</a></p>
+					<p><a href="#contact">Contact</a></p>
+					<p>&nbsp;</p>
+					<p>Swipe to close</p>
+					<strong><p>Version 1.0</p></strong>
+					<p>&nbsp;</p>
+					<p><img src="images/whitelogo.png" alt="Logo" width="150"></p>
+
+					<a href="#demo-links" data-rel="close" data-role="button" data-theme="a" data-icon="delete" data-inline="true">Close panel</a>
+				</div><!-- /content wrapper for padding -->
+			</div><!-- /defaultpanel -->
+		</div>
+		
 		<div data-role="page" id="timer">
 			<div data-role="header">
 				<h1 text-align="center">
@@ -360,6 +397,12 @@
 
 		
  		<script type="text/javascript">
+ 		
+ 			if (window.localStorage) 
+				if (window.localStorage.getItem("InitialLocation") !== null)
+					window.location.hash='#return';
+						
+						
 			// Note: This example requires that you consent to location sharing when
 			// prompted by your browser. If you see the error "The Geolocation service
 			// failed.", it means you probably did not give permission for the browser to
