@@ -39,7 +39,8 @@ var app = {
     //map.initialize();
     },
     onResume: function() {
-        window.location.hash="#home";
+   //     window.location.hash="#home";
+   window.location.reload();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
