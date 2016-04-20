@@ -9,20 +9,22 @@
 		<meta http-equiv="Content-Security-Policy" content="content_security_policy": "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; object-src 'self'" />
 		<title>GPS Countdown</title>
 		
-		
+		<!-- JB - the map is 100% of the screen for user experience on a range of devices -->
 		<style>
-		#map {
-        	height: 100px;
+		#mapcontainer {
+        	height: 100%;
 		}	
 		</style>
 		
 		
 		
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+
 		
+		<!-- JB - A CDN was not used due to needing functionality without internet connection or unnecessarily using user data allowance. Referenced from https://jquerymobile.com/download/   -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		
     
 	</head>
 	<body onhashchange="refreshMap()">
@@ -164,7 +166,7 @@
 
 			<div role="main" class="ui-content">
 				<h1>Map here</h1>
-				    <div id="map"></div>
+				    <div id="mapcontainer"></div>
 
 			</div>
 
@@ -415,7 +417,7 @@
 			// failed.", it means you probably did not give permission for the browser to
 			// locate you.
 			function initMap() {
-				var map = new google.maps.Map(document.getElementById('map'), {
+				var map = new google.maps.Map(document.getElementById('mapcontainer'), {
 					center: {lat: -34.397, lng: 150.644},
 					zoom: 18
 				});
