@@ -446,22 +446,29 @@
 								var directionsDisplay = new google.maps.DirectionsRenderer();
 								directionsDisplay.setMap(map);
 								directionsDisplay.setOptions({suppressMarkers:true});
-								
+
+		// JB - var start is the start location, which is the current location of the user
 								var start = {
 									lat: position.coords.latitude,
 									lng: position.coords.longitude
 								};
+								
+		// JB - arrow.png is the 'you are here' icon  which is a map marker.
 								var image = "http://maps.google.com/mapfiles/kml/shapes/arrow.png";
 								var parkingMarker = new google.maps.Marker({
 								position: start,
 								map: map,
 								icon: image
 								});
+								
+		// JB - This is the start and end location. As this is a car parking application the mode of transport to get back to your parked car is walking.
 								var request = {
 									origin:start,
 									destination:pos,
 									travelMode: google.maps.TravelMode.WALKING
 								};
+								
+		// JB - Request the route, if all is okay display conetnet.
 								directionsService.route(request, function(result, status) {
 									if (status == google.maps.DirectionsStatus.OK) {
 										directionsDisplay.setDirections(result);
@@ -470,32 +477,31 @@
 							}
 						}
 						else {
+							
+		// JB - Otherwise an alert will pop up will be used to inform the user this map function cannot be used.
 							alert("No storage");
 						}
+						
+		// JB - A marker image (a car park ion)  will be shown to show the user where they have parked the vehicle.
 						var image = "http://maps.google.com/mapfiles/kml/shapes/parking_lot.png";
 						var parkingMarker = new google.maps.Marker({
 							position: pos,
 							map: map,
 							icon: image
 						});
-						/*infoWindow.setPosition(pos);
-						infoWindow.setContent('You have parked here.');*/
 						map.setCenter(pos);
 					}, function() {
-						//handleLocationError(true, infoWindow, map.getCenter());
+						alert("GPS location cannot be found.");
 					});
 				}
 				else {
-					// Browser doesn't support Geolocation
-					//handleLocationError(false, infoWindow, map.getCenter());
+	// JB - An error message is displayed if GEO location is not allowed or enabled.
+					
+					alert("GPS has not been enabled/allowed on this device");
 				}
 			}
-			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-				infoWindow.setPosition(pos);
-				infoWindow.setContent(	browserHasGeolocation ?
-							"Error: The Geolocation service failed." :
-							"Error: Your browser doesn't support geolocation.");
-			}
+	
+	// JB - Re
 			function refreshMap() {
 				if (location.hash.substr(1) === "map") {
 					setTimeout(function() {
