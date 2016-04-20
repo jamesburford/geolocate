@@ -8,18 +8,7 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
 		<meta http-equiv="Content-Security-Policy" content="content_security_policy": "script-src 'self' https://maps.googleapis.com https://maps.gstatic.com; object-src 'self'" />
 		<title>GPS Countdown</title>
-		
-		<!-- JB - the map is 100% of the screen for user experience on a range of devices -->
-		<style>
-		#map {
-        	height: 500px;
-		}	
-		</style>
-		
-		
-		
 
-		
 		<!-- JB - A CDN was not used due to needing functionality without internet connection or unnecessarily using user data allowance. Referenced from https://jquerymobile.com/download/   -->
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -28,7 +17,7 @@
     
 	</head>
 
-	<!-- JB -  -->
+	<!-- JB - This refreshes the map from the users location compared to the default location rather than using the default Google Maps location. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation  -->
 	<body onhashchange="refreshMap()">
 		<div data-role="page" id="home">
 			<div data-role="header">
@@ -120,6 +109,8 @@
 			<div role="main" class="ui-content">
 				<h4>Set a time you want to wish to be back at</h4>
 				<form>
+					
+			<!-- JB - This allows the user to select the time which triggers a notification. Referenced from http://www.javascriptkit.com/script/script2/alarm.shtml -->
 					<div id="jsalarmclock">
 						<div><span>Hour<select></select></span> <span>Minutes<select></select></span> </div>
 						<p>Set notification time</p>
@@ -167,6 +158,7 @@
 			</div>
 
 			<div role="main" class="ui-content">
+		<!-- JB - Map is displayed here. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation -->
 				    <div id="map"></div>
 
 			</div>
@@ -256,6 +248,7 @@
 			<div role="main" class="ui-content">
 				<h1>Contact us</h1>
 				<h4>Need any assistance? Found an error? We'd love to hear from you!</h4>
+				<!-- JB -The contact form is available for users to contact the developers for feedback and support. The code is referenced from http://www.123contactform.com/html-contact-form/ -->
 				<form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
 					<div class="row">
 						<input id="name" class="input" placeholder="Your name" name="name" type="text" value="" size="30" /><br />
@@ -272,7 +265,7 @@
 				<hr>
 				<p>&nbsp;</p>
 				<h3>Address information</h3>
-				<p>Email address: contact@gpscountdown.com</p>
+				<a href="mailto:contact@gpscountdown.com"></a><p>Email address: contact@gpscountdown.com</p></a>
 				<p>&nbsp;</p>
 				<p>32 Example Road</p>
 				<p>Springfield</p>
@@ -305,13 +298,16 @@
 			</div><!-- /defaultpanel -->
 		</div>
 
+	<!-- JB - This section populates the hour dropdowns upto 23, minute dropdowns upto 59 and notification dropdowns upto 60. Some of the code is referenced from http://www.javascriptkit.com/script/script2/alarm.shtml -->
+
 		<script type="text/javascript">
 			function start() {
 				$('#jsalarmclock select')[0].id = 'hour';
 				$('#jsalarmclock select')[1].id = 'minute';
-				for (var i = 0; i < 60; i++) {
+				for (var i = 0; i < 60; i++)
+					{
 					if (i < 24)
-						$('#hour').append($('<option>', {
+						$('#hour').append($('<option>',	{
 							value: i,
 							text: pad(i),
 							selected: (new Date()).getHours() === i
@@ -328,23 +324,26 @@
 					}));
 				}
 			}
+			
+			
+	<!-- JB - This makes single numbers appear with a 0 before for example 1 being 01. If the number is less than 10 add a leading 0 in, if the nuber is greater than 10 leave alone -->
+
 			function pad(num) {
 				return (num < 10) ? "0" + num : num;
 			}
-			/*function alarmAction() {
-				//Alarm action goes here//
-				cordova.plugins.notification.local.schedule({
-					title: "Car parking nearly up",
-					text: "Car parking up in 10 minutes, use the app to make your way back to your vehicle.",
-				});
-			}*/
+	
+	<!-- JB - Displays the notification to inform the user that the car parking is nearly up in a notfication which the user has set. Referenced: https://github.com/katzer/cordova-plugin-local-notifications  -->
+
 			function setNotification(time) {
 				cordova.plugins.notification.local.schedule({
 					title: "Car parking nearly up",
-					text: "Car parking up in 10 minutes, use the app to make your way back to your vehicle.",
+					text: "Car parking up shortly, use the map to make your way back to your vehicle.",
 					at: time
 				});
 			}
+	
+	<!-- JB - If the button (link) is clicked this will disable the default functionality of the link and run the following code. The user inputed data is passed into the funcion converted into miliseconds to enable calculations since the UNIX EPOCH date. If the time selected is in the past it will add 24 hours. Resulting in sending the user a notification alert using the users phone in built notification popup -->
+
 			$('#submitbutton').click(function(e) {
 				e.preventDefault();
 				$('#jsalarmclock select').attr('disabled','disabled');
@@ -352,28 +351,22 @@
 				t.setHours($('#hour').val());
 				t.setMinutes($('#minute').val());
 				t.setSeconds(0);
-				if (t <= (new Date()))
-					t.setDate(t.getDate() + 1);
-				/*timer = setInterval(function() {
-					var now = new Date();
-					if (now.getHours() == $('#hour').val() && now.getMinutes() == $('#minute').val())
-					{
-						clearInterval(timer);
-						alarmAction();
-					}
-				}, 1000);*/
-				
+
 				var min = parseInt( $('#notificationdelay').val());
 				var ms = min * 60000;
 				var d = new Date(t - ms);
 				if (d < (new Date())) d.setDate(d.getDate() + 1);
 				setNotification(d);
-				alert('Time set');
+				alert('Time has been set');
 			});
+			
+	<!-- JB - Reset time button function. When fired this cancels notifications -->
+
 			$('#resetbutton').click(function() {
 				cordova.plugins.notification.local.cancelAll();
 			});
 		</script>
+		
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript">
