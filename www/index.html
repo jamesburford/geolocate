@@ -11,7 +11,7 @@
 		
 		<!-- JB - the map is 100% of the screen for user experience on a range of devices -->
 		<style>
-		#mapcontainer {
+		#map {
         	height: 500px;
 		}	
 		</style>
@@ -167,7 +167,7 @@
 			</div>
 
 			<div role="main" class="ui-content">
-				    <div id="mapcontainer"></div>
+				    <div id="map"></div>
 
 			</div>
 
@@ -418,7 +418,7 @@
 			// failed.", it means you probably did not give permission for the browser to
 			// locate you.
 			function initMap() {
-				var map = new google.maps.Map(document.getElementById('mapcontainer'), {
+				var map = new google.maps.Map(document.getElementById('map'), {
 					center: {lat: -34.397, lng: 150.644},
 					zoom: 18
 				});
