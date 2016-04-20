@@ -367,8 +367,13 @@
 			});
 		</script>
 		
+	<!-- JB - A CDN was not used due to needing functionality without internet connection or unnecessarily using user data allowance. Referenced from https://github.com/apache/cordova-js   -->
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
+		
+		
+	<!-- JB - Displays a message to the user depending on the different times of day. Referenced from http://www.javascriptsource.com/time-date/good-morning-afternoon-and-evening-by-brad-jones-120319202500.html -->
+
 		<script type="text/javascript">
 			app.initialize();
 			var myDate = new Date();
@@ -392,20 +397,25 @@
 		
 		
 		
-
 		
  		<script type="text/javascript">
- 		
+ 
+ 	// JB - If there is a location set then take the user to the return screen
+
  			if (window.localStorage) 
 				if (window.localStorage.getItem("InitialLocation") !== null)
 					window.location.hash='#return';
-			
+	
+	// JB - If the user clicks on the start over link this clears the local storage and dispays the home screen and reintialises the map
 			$('#startover').click(function(){
-			window.localStorage.clear();
-			initMap();
-			window.location.hash='#home';
+				window.localStorage.clear();
+				initMap();
+				window.location.hash='#home';
 			});		
-						
+					
+				
+	// JB - The initalise map function redraws the map and centres the map on the default location and zoom level
+				
 			// Note: This example requires that you consent to location sharing when
 			// prompted by your browser. If you see the error "The Geolocation service
 			// failed.", it means you probably did not give permission for the browser to
@@ -415,8 +425,8 @@
 					center: {lat: -34.397, lng: 150.644},
 					zoom: 18
 				});
-				//var infoWindow = new google.maps.InfoWindow({map: map});
-        
+				
+        // JB - This gets the geolocation from the user using the in built GPS from the current position of the user. Giving the latitute and longitude of the user.
 				google.maps.event.trigger(map, 'resize');
 				// Try HTML5 geolocation.
 				if (navigator.geolocation) {
@@ -425,7 +435,8 @@
 							lat: position.coords.latitude,
 							lng: position.coords.longitude
 						};
-            
+						
+		// JB - Checking to see if local storage is available on the device. If local storage is empty this sets the InitialLoation with the GPS position. Otherwise, set the pos variable (which is where the car is parked) and mark it as a destination and creates the return to car feature.
 						if (window.localStorage) {
 							if (window.localStorage.getItem("InitialLocation") === null)
 								window.localStorage.setItem("InitialLocation", JSON.stringify(pos));
