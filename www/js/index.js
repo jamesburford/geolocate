@@ -16,35 +16,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
+
+ 
 var app = {
-    // Application Constructor
+
+// JB - The initalize function initializes the app and triggers the bindEvents which inturn setting a listener for the cordova event.
     initialize: function() {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+   
+   
+   
+   // JB - the deviceready event fires when the application is loaded. The resume function resumes when the application is reloaded.  
+
     bindEvents: function() {
+
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener('resume', this.onResume, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+
+    
+    
+// JB - This is triggered when the device is ready and calls the start function. When the device is ready the dropdowns are populated.
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    //var map = new GoogleMap();
-    //map.initialize();
-    },
-    onResume: function() {
-   //     window.location.hash="#home";
-   window.location.reload();
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
         if (start !== undefined)
             start();
-    }
+    },
+
+// JB - This reloads to the 'welcome back' screen which allows the user to carry on from where the user left of or set a new time and a new session within the app.
+    onResume: function() {
+   window.location.reload();
+    },
 };
