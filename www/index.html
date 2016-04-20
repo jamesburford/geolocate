@@ -400,13 +400,13 @@
 		
  		<script type="text/javascript">
  
- 	// JB - If there is a location set then take the user to the return screen
+ 	// JB - If there is a location set then take the user to the return screen. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 
  			if (window.localStorage) 
 				if (window.localStorage.getItem("InitialLocation") !== null)
 					window.location.hash='#return';
 	
-	// JB - If the user clicks on the start over link this clears the local storage and dispays the home screen and reintialises the map
+	// JB - If the user clicks on the start over link this clears the local storage and dispays the home screen and reintialises the map. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 			$('#startover').click(function(){
 				window.localStorage.clear();
 				initMap();
@@ -414,7 +414,7 @@
 			});		
 					
 				
-	// JB - The initalise map function redraws the map and centres the map on the default location and zoom level
+	// JB - The initalise map function redraws the map and centres the map on the default location and zoom level. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 				
 			// Note: This example requires that you consent to location sharing when
 			// prompted by your browser. If you see the error "The Geolocation service
@@ -426,7 +426,7 @@
 					zoom: 18
 				});
 				
-        // JB - This gets the geolocation from the user using the in built GPS from the current position of the user. Giving the latitute and longitude of the user.
+        // JB - This gets the geolocation from the user using the in built GPS from the current position of the user. Giving the latitute and longitude of the user. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 				google.maps.event.trigger(map, 'resize');
 				// Try HTML5 geolocation.
 				if (navigator.geolocation) {
@@ -436,7 +436,7 @@
 							lng: position.coords.longitude
 						};
 						
-		// JB - Checking to see if local storage is available on the device. If local storage is empty this sets the InitialLoation with the GPS position. Otherwise, set the pos variable (which is where the car is parked) and mark it as a destination and creates the return to car feature.
+		// JB - Checking to see if local storage is available on the device. If local storage is empty this sets the InitialLoation with the GPS position. Otherwise, set the pos variable (which is where the car is parked) and mark it as a destination and creates the return to car feature. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 						if (window.localStorage) {
 							if (window.localStorage.getItem("InitialLocation") === null)
 								window.localStorage.setItem("InitialLocation", JSON.stringify(pos));
@@ -447,13 +447,13 @@
 								directionsDisplay.setMap(map);
 								directionsDisplay.setOptions({suppressMarkers:true});
 
-		// JB - var start is the start location, which is the current location of the user
+		// JB - var start is the start location, which is the current location of the user. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 								var start = {
 									lat: position.coords.latitude,
 									lng: position.coords.longitude
 								};
 								
-		// JB - arrow.png is the 'you are here' icon  which is a map marker.
+		// JB - arrow.png is the 'you are here' icon  which is a map marker. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 								var image = "http://maps.google.com/mapfiles/kml/shapes/arrow.png";
 								var parkingMarker = new google.maps.Marker({
 								position: start,
@@ -461,7 +461,7 @@
 								icon: image
 								});
 								
-		// JB - This is the start and end location. As this is a car parking application the mode of transport to get back to your parked car is walking.
+		// JB - This is the start and end location. As this is a car parking application the mode of transport to get back to your parked car is walking. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 								var request = {
 									origin:start,
 									destination:pos,
@@ -478,11 +478,11 @@
 						}
 						else {
 							
-		// JB - Otherwise an alert will pop up will be used to inform the user this map function cannot be used.
+		// JB - Otherwise an alert will pop up will be used to inform the user this map function cannot be used. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 							alert("No storage");
 						}
 						
-		// JB - A marker image (a car park ion)  will be shown to show the user where they have parked the vehicle.
+		// JB - A marker image (a car park ion)  will be shown to show the user where they have parked the vehicle. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 						var image = "http://maps.google.com/mapfiles/kml/shapes/parking_lot.png";
 						var parkingMarker = new google.maps.Marker({
 							position: pos,
@@ -495,13 +495,13 @@
 					});
 				}
 				else {
-	// JB - An error message is displayed if GEO location is not allowed or enabled.
+	// JB - An error message is displayed if GEO location is not allowed or enabled. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 					
 					alert("GPS has not been enabled/allowed on this device");
 				}
 			}
 	
-	// JB - Re
+	// JB - When the 'map' section is loaded the map container is refreshed after getting location coordinates. The Google Maps code is referenced from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
 			function refreshMap() {
 				if (location.hash.substr(1) === "map") {
 					setTimeout(function() {
