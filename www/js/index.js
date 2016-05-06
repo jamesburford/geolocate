@@ -17,7 +17,8 @@
  * under the License.
  */
  
-
+ 
+// JB - Referenced from http://www.apache.org, https://cordova.apache.org/.
  
 var app = {
 
